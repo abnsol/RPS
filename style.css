@@ -1,0 +1,81 @@
+body{
+    background-color: rgb(4, 4, 58);
+    color: rgb(0, 0, 0);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+p{
+    font-size: 1em;
+    margin: 2px;
+    color: white;
+
+}
+
+#container{
+    border: 2px solid rgb(255, 255, 255);
+    background-color: skyblue;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;   
+    border-radius: 10px; 
+}
+
+#roundWinner,#btns,#scoreboard,#gameOver{
+    display: flex;
+    flex:1 1 0;
+    min-width: 300px;
+    max-height: 100px;
+    justify-content: center;
+}
+
+#scoreboard{
+    gap:10px;
+}
+
+
+#compScoreDiv, #humanScoreDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#compScoreLabel, #humanScoreLabel {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+#compScore, #humanScore {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+#btns{
+    gap:10px;
+    background-color: #1a3457;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#gameOver{
+    background-color: #1a3457;
+    border-radius: 10px;
+    color: white;
+}
+
+
+
