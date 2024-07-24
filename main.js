@@ -13,52 +13,88 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    // prompt from user
-    validChoices = ["rock","paper","scissor"];
-    let choice = prompt("Choose one from [Rock,Paper,Scissor] and enter below: ");
-    while (!(validChoices.includes(choice.toLowerCase()))){
-        choice = prompt("Choose one from [Rock,Paper,Scissor] and enter below: ");
-    }
-    return choice.toLowerCase();    
-}
-
-// count scores to end at round 5
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound(humanChoice,computerChoice){
+    //update scoreboard
+    let divCompScore = document.querySelector("#compScore");
+    let divHumanScore = document.querySelector("#humanScore");
+    let roundWinner = document.querySelector("#roundWinner");
+    let gameOver = document.querySelector("#gameOver");
+    let rounds = document.querySelector("#rounds");
+
+    rounds.textContent = "Round : " + round;
     // ordered the map in a way neighbors lose to previous elements(circular)
     rule = {"paper" : 0,"rock" : 1,"scissor" : 2};
     if (rule[humanChoice] == rule[computerChoice] + 1 || computerChoice === "scissor" && humanChoice == "paper"){
         computerScore += 1;
-        console.log("You lose!");
+        divCompScore.textContent = computerScore;
+        roundWinner.textContent = "You lose!!!";        
     }
+
     else if(rule[humanChoice] == rule[computerChoice] - 1 || humanChoice === "scissor" && computerChoice == "paper"){
         humanScore += 1;
-        console.log("You win!!");
+        divHumanScore.textContent = humanScore;
+        roundWinner.textContent = "You win!!";
     }
+
     else if(humanChoice === computerChoice){
-        console.log("A tie");
+        roundWinner.textContent = "Tie";
+    }
+
+    if (round == 5){
+        if(humanScore > computerScore){
+            roundWinner.textContent = "You win!!";
+        }
+        else if(humanScore < computerScore){
+            roundWinner.textContent = "You lose!!!";
+        }
+        else{
+            roundWinner.textContent = "Tie";
+        }
+        
+        gameOver.textContent = "GameOver";
+        setTimeout(() => {
+            location.reload()
+        },2000);
+        
     }
 }
 
-function playGame(){
-    for (let i = 0; i < 5; i++){
-        human = getHumanChoice();
-        computer = getComputerChoice();
-        playRound(human,computer);
-    }
 
-    if (humanScore > computerScore){
-        console.log(`You win and the score was ${humanScore} - ${computerScore}`);
-    }
-    else if(humanScore < computerScore){
-        console.log(`Computer win and the score was ${humanScore} - ${computerScore}`);
-    }
-    else{
-        console.log("A tie!")
-    }
-}
+// count scores to end at round 5
+let humanScore = 0;
+let computerScore = 0;
+let round = 0;
 
-playGame();
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
+
+
+
+rock.addEventListener('click',() =>{
+    if (round >= 5) return; 
+    let human = 'rock';
+    round += 1;
+    playRound(human,getComputerChoice())
+});
+paper.addEventListener('click',() =>{
+    if (round >= 5) return;
+    let human = 'paper';
+    round += 1;
+    playRound(human,getComputerChoice())
+});
+scissor.addEventListener('click',() =>{
+    if (round >= 5) return;
+    let human = 'scissor';
+    round += 1;
+    playRound(human,getComputerChoice())
+});
+
+
+
+
+
+
+    
+
