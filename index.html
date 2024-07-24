@@ -4,21 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play RPS</title>
-    <style>
-        body{
-            background-color: rgb(98, 98, 243);
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 2em;
-        }
-    </style>
+    <link  href="style.css" rel="stylesheet">
+    <script defer src="main.js"></script>    
 </head>
+
 <body>
-    <pre>Open console by pressing 
-ctrl + shift + j (Linux/Windows) or 
-cmd + alt + j (mac)</pre>
+    <p>Let's play rock paper scissor</p>
+    <p id="rounds"></p>
+    <div id="container">
+    <div id="scoreboard">
+        <div id="compScoreDiv">
+            <span id="compScoreLabel">Computer Score</span>
+            <span id="compScore">0</span>
+        </div>
+        <span> - </span>
+        <div id="humanScoreDiv">
+            <span id="humanScoreLabel">Human Score</span>
+            <span id="humanScore">0</span>
+        </div>
+    </div>
 
+    <div id="btns">
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissor">scissor</button>
+    </div>
 
-    <script defer src="main.js"></script>
+    <div id="roundWinner"></div>
+    <div id="gameOver"></div>
+    </div>
 </body>
 </html>
